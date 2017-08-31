@@ -46,18 +46,18 @@ server.route({
 				return;
 			}
 
-			// reply(payload);
+			reply(payload);
 
-			const items = [];
-			payload.items.forEach((item) => {
-				items.push({
-					thumbnail: {
-						url: item.images.thumbnail.url
-					}
-				});
-			});
+			// const items = [];
+			// payload.items.forEach((item) => {
+			// 	items.push({
+			// 		thumbnail: {
+			// 			url: item.images.thumbnail.url
+			// 		}
+			// 	});
+			// });
 
-			reply({ items });
+			// reply({ items });
 			});
 		}
   });
