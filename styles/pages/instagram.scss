@@ -13,9 +13,15 @@
 }
 
 .flex-body-section{
+    padding: 0 100px 0 100px;
     display: flex;
     overflow-x: auto;
+}
+
+.inst-image{
+    width: 300px !important;
+    margin-right: 20px;
     img{
-        // width: 30%
+        width: 300px;
     }
 }

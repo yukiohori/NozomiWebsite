@@ -15,10 +15,29 @@ export default class login extends React.Component{
 	componentWillMount(){
 		axios.get('http://localhost:9002/api/nozomi-instagram')
 		.then((response) => {
-			console.log(response.data.items);
-			this.setState({
-				instagramImages: response.data.items
+			// console.log(response.data.items);
+			let InstagramArray = [];
+			let countImage = 0;
+			let objectImage = {};
+			response.data.items.map((data)=>{
+				countImage+=1;
+				if(countImage==1){
+					objectImage.image1 = data.thumbnail.url;
+				}else{
+					objectImage.image2 = data.thumbnail.url;
+				}
+				if(countImage == 2){
+					countImage = 0;
+					InstagramArray.push(objectImage);
+					objectImage = {};
+				}
 			});
+
+			this.setState({
+				instagramImages: InstagramArray
+			});
+
+			console.log(InstagramArray);
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -36,8 +55,10 @@ export default class login extends React.Component{
 				<div className="flex-body-section">
 					 {
 						this.state.instagramImages.map((image, index) => {
-							if(index % 2 == 0)
-							return <img src={image.thumbnail.url} />
+							return <div key={index} className="inst-image">
+								<img src={image.image1} />
+								<img src={image.image2} />
+							</div>
 						})
 					}
 				</div>
