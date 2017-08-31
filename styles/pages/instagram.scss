@@ -1,0 +1,21 @@
+.instagram-style{
+    background: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,0.8)), url('https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/18160668_1098799390225420_9163228037850857472_n.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    h1{
+        margin-top: 0 !important;
+    }
+}
+
+.photo-section{
+    // width: 30%;
+}
+
+.flex-body-section{
+    display: flex;
+    overflow-x: auto;
+    img{
+        // width: 30%
+    }
+}
