@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/index.scss';
+import {Carousel} from 'react-materialize';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -91,27 +92,13 @@ export default class App extends React.Component {
 						<h2 onClick={()=>this.changeWorksCategory('gallery')} className={this.state.worksSelected.gallery}>GALLERY</h2>
 					</div>
 					<div className={"works-pictures " + this.state.worksSelected.works }>
-						<div>
-							<img src={require('../img/works.png')} />
-						</div>
-						<div>
-							<img src={require('../img/about-min.png')} />
-						</div>
-						<div>
-							<img src={require('../img/works.png')} />
-						</div>
-						<div>
-							<img src={require('../img/about-min.png')} />
-						</div>
-						<div>
-							<img src={require('../img/works.png')} />
-						</div>
-						<div>
-							<img src={require('../img/about-min.png')} />
-						</div>
-						<div>
-							<img src={require('../img/works.png')} />
-						</div>
+						<Carousel images={[
+							'https://lorempixel.com/250/250/nature/1',
+							'https://lorempixel.com/250/250/nature/2',
+							'https://lorempixel.com/250/250/nature/3',
+							'https://lorempixel.com/250/250/nature/4',
+							'https://lorempixel.com/250/250/nature/5'
+						]} />
 					</div>
 					<div className={"works-pictures " + this.state.worksSelected.gallery }>
 						<div>

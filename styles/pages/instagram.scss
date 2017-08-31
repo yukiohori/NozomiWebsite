@@ -16,12 +16,19 @@
     padding: 0 100px 0 100px;
     display: flex;
     overflow-x: auto;
+    height: 100%;
+    align-items: center;
 }
 
 .inst-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     width: 300px !important;
     margin-right: 20px;
+    height: 100%;
     img{
         width: 300px;
+        cursor: pointer;
     }
 }
