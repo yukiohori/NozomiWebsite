@@ -1,18 +1,23 @@
 
 .nav-style{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255,255,255,0.9);
-    height: 100vh;
-    color: white;
-    z-index: 900;
-    align-items: center;
-    transform: translateX(calc(60px - 100%));
-    transition: all 0.3s linear;
+    display: none;
+    @include lg {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: rgba(255,255,255,0.9);
+        height: 100vh;
+        color: white;
+        z-index: 900;
+        align-items: center;
+        transform: translateX(calc(60px - 100%));
+        transition: all 0.3s linear;
+        display: flex;
+    }
+
+
     .menu-content{
         display: flex;
         flex-direction: row;

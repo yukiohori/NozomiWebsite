@@ -4,8 +4,6 @@ body {
   padding:0;
   overflow-x: hidden;
   box-sizing: border-box;
-  transform-style: preserve-3d;
-  perspective: 1000px;
 }
 
 
@@ -26,34 +24,40 @@ a, li, div, p{
   justify-content: center;
   align-items: center;
   z-index: -1;
+  transform-style: preserve-3d;
+  perspective: 1000px;
   
   img{
     width: 80vw;
     height: 80vh;
-    transition: transform 1s ease;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     box-shadow: 0px 10px 30px 0;
     border-radius: 3px;
     object-fit: cover;
-    &:hover{
-      transform: rotateX(-1deg) rotateY(-3deg);
-    }
-  }
-
-  &:hover{
-    h1{
-      transform: rotateX(1deg) rotateY(8deg);
-    }
+    
   }
 
   h1{
-    position: absolute;
-    z-index: 10;
-    left: 100px;
-    // border-bottom: solid 3px black;
+    padding: 15px 10px;
     background-color: rgba(255,255,255,0.7);
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .top-letter{
+    position: absolute;
+    z-index: 200;
+    top: 30vh;
     border-radius: 3px;
-    padding: 20px 10px;
-    transition: transform 1s ease;
+    transform: translateX(0px) translateY(0px) translateZ(150px);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    @include sm {
+      display: none;
+      width: 100%;
+    }
+    @include lg {
+      left: -20px;
+    }
   }
 }
 
@@ -238,15 +242,40 @@ a, li, div, p{
 }
 
 .backgournd-content{
-  background: linear-gradient(to right,white,white,white, rgba(255,255,255,0.9)) , url('../img/demo3.jpg');
-  padding: 30px 30px 30px 0px;
+  @include lg {
+    background: linear-gradient(to right,white,white,white, rgba(255,255,255,0.2)) , url('../img/demo3.jpg');
+    background-attachment: fixed;
+    padding: 30px 30px 30px 0px;
+  }
 }
 
 .container-style{
   background-color: white;
-  padding-left: 60px;
+  @include lg {
+    padding-left: 60px;
+  }
 }
 
 .row{
+  @include lg {
+    width: 992px;
+  }
   margin-bottom: 0 !important;
+}
+
+.about-home{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px !important;
+  img{
+    width: 100%;
+  }
+}
+
+.content-centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
 }
