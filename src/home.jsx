@@ -1,6 +1,9 @@
 import React from 'react';
 import '../styles/index.scss';
-import {Carousel} from 'react-materialize';
+import {Carousel , Row, Col} from 'react-materialize';
+
+const maxX = 10;
+const maxY = 10;
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -9,7 +12,9 @@ export default class App extends React.Component {
 		this.state = {
 			worksSelected: {
 				works: 'selected',
-				gallery:''
+				gallery:'',
+				pageX: 0,
+				pageY: 0
 			},
 			worksShow:'works',
 			animationArray:{
@@ -18,6 +23,7 @@ export default class App extends React.Component {
 			}
 		}
 
+		this.onMouseMove = this.onMouseMove.bind(this);
 		this.handleScroll = this.handleScroll.bind(this);
 		this.changeWorksCategory = this.changeWorksCategory.bind(this);
 	}
@@ -43,14 +49,24 @@ export default class App extends React.Component {
 			}
 		}
 
-  }
+	}
+
+	onMouseMove(e){
+		this.setState({
+			pageX: e.pageX,
+			pageY: e.pageY
+		});
+		// console.log(e);
+	}
 
 	componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+		window.addEventListener("mousemove", this.onMouseMove);
+    // window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+		window.removeEventListener("mousemove", this.onMouseMove);
+    // window.removeEventListener("scroll", this.handleScroll);
   }
 
 	changeWorksCategory(category){
@@ -69,88 +85,28 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="top-header">
-				</div>
-				<div className="home-content" ref="homecontent">
-					<div className="about-img">
-						<img src={require('../img/about-min.png')} />
-					</div>
-					<div className={"about-content " + this.state.animationArray.homecontent}>
+      <div className="backgournd-content">
+				<div className="container-style">
+					<Row>
+						<div className="top-header">
+							<h1>NOZOMI NAKANO</h1>
+							<img style={{display: 'block'}} src={require('../img/demo.png')} alt="" />
+						</div>
+					</Row>
+					<Row>
 						<h1>NOZOMI NAKANO</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							 Aenean mauris nisi, maximus a placerat at, scelerisque sed orci.
-							  Pellentesque mi nunc, auctor ut sollicitudin sed, iaculis tristique dolor.
+							Aenean mauris nisi, maximus a placerat at, scelerisque sed orci.
+								Pellentesque mi nunc, auctor ut sollicitudin sed, iaculis tristique dolor.
 						</p>
-					</div>
-				</div>
-				<div className="works-content">
-					<h1>Works &amp;  Gallery</h1>
-					<div className="works-selection">
-						<h2 onClick={()=>this.changeWorksCategory('works')} className={this.state.worksSelected.works}>WORKS</h2>
-						<span className="separator">|</span>
-						<h2 onClick={()=>this.changeWorksCategory('gallery')} className={this.state.worksSelected.gallery}>GALLERY</h2>
-					</div>
-					<div className={"works-pictures " + this.state.worksSelected.works }>
-						<Carousel images={[
-							'https://lorempixel.com/250/250/nature/1',
-							'https://lorempixel.com/250/250/nature/2',
-							'https://lorempixel.com/250/250/nature/3',
-							'https://lorempixel.com/250/250/nature/4',
-							'https://lorempixel.com/250/250/nature/5'
-						]} />
-					</div>
-					<div className={"works-pictures " + this.state.worksSelected.gallery }>
-						<div>
-							<img src={require('../img/gallery1.png')} />
-						</div>
-						<div>
-							<img src={require('../img/gallery2.png')} />
-						</div>
-						<div>
-							<img src={require('../img/gallery1.png')} />
-						</div>
-						<div>
-							<img src={require('../img/gallery2.png')} />
-						</div>
-						<div>
-							<img src={require('../img/gallery1.png')} />
-						</div>
-						<div>
-							<img src={require('../img/gallery2.png')} />
-						</div>
-						<div>
-							<img src={require('../img/gallery1.png')} />
-						</div>
-					</div>
-					<div className="set-center">
-						<a className="more-btn">More Works &amp; Gallery</a>
-					</div>
-				</div>
-				<div className="blog-section">
-					<div ref="blogcontent" className={"blog-content " + this.state.animationArray.blogcontent}>
-						<h1>BLOG</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							 Aenean mauris nisi, maximus a placerat at, scelerisque sed orci.
-							  Pellentesque mi nunc, auctor ut sollicitudin sed, iaculis tristique dolor.
-						</p>
-						<a className="more-btn">Read my blog</a>
-					</div>
-					<div className="blog-img">
-						<img src={require('../img/blog.jpg')} />
-					</div>
-				</div>
-				<div className="contact-section">
-					<div className="contact-img">
-						<img src={require('../img/gallery2.png')} />
-					</div>
-					<div className="contact-content">
+					</Row>
+					<Row>
 						<h1>NOZOMI NAKANO</h1>
-						<p>Job Name</p>
-						<p>nozomi@gmail.com</p>
-						<p>080-0000-1111</p>
-						<p>Linkdin address</p>
-					</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Aenean mauris nisi, maximus a placerat at, scelerisque sed orci.
+								Pellentesque mi nunc, auctor ut sollicitudin sed, iaculis tristique dolor.
+						</p>
+					</Row>
 				</div>
       </div>
     )
