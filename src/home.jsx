@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/index.scss';
-import {Carousel , Row, Col} from 'react-materialize';
+import {Carousel , Row, Col, Parallax, Toast, Button, Input, Footer} from 'react-materialize';
 
 const transformFactor = 0.11;
 const transformFactor2 = 0.2;
@@ -37,23 +37,13 @@ export default class App extends React.Component {
 		// console.log(window.pageYOffset);
 		// console.log(this.refs.homecontent.getBoundingClientRect().top);
 		if(this.state.animationArray.homecontent===''){
-			if(this.refs.homecontent.getBoundingClientRect().top<300){
+			if(this.refs.homecontent.getBoundingClientRect().top<600){
 				this.state.animationArray.homecontent='show';
 				this.setState({
 					animationArray: this.state.animationArray
 				});
 			}
 		}
-
-		if(this.state.animationArray.blogcontent===''){
-			if(this.refs.blogcontent.getBoundingClientRect().top<300){
-				this.state.animationArray.blogcontent='show';
-				this.setState({
-					animationArray: this.state.animationArray
-				});
-			}
-		}
-
 	}
 
 	onMouseMove(e){
@@ -80,14 +70,12 @@ export default class App extends React.Component {
 
 	componentDidMount() {
 		this.refs.imagehover.addEventListener("mousemove", this.onMouseMove);
-		// window.addEventListener("mousemove", this.onMouseMove);
-    // window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
 		this.refs.imagehover.removeEventListener("mousemove", this.onMouseMove);
-		// window.removeEventListener("mousemove", this.onMouseMove);
-    // window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
 	changeWorksCategory(category){
@@ -123,7 +111,8 @@ export default class App extends React.Component {
 						</Col>
 						<Col s={12} m={2} l={3}></Col>
 					</Row>
-					<Row className="about-home">
+					<div ref="homecontent" className={"about-home " + this.state.animationArray.homecontent}>
+					<Row>
 						<Col s={12} m={2} l={3}></Col>
 						<Col s={12} m={8} l={6}>
 							<h1>NOZOMI NAKANO</h1>
@@ -134,6 +123,7 @@ export default class App extends React.Component {
 						</Col>
 						<Col s={12} m={2} l={3}></Col>
 					</Row>
+					</div>
 					<Row>
 						<Col s={12} m={2} l={3}></Col>
 						<Col s={12} m={8} l={6}>
@@ -141,9 +131,9 @@ export default class App extends React.Component {
 						</Col>
 						<Col s={12} m={2} l={3}></Col>
 					</Row>
-					<Row className="about-home">
+					<Row className="content-home">
 						<Col s={12} m={12} l={6}>
-							<img src={require('../img/demo.png')} alt="" />
+							<Parallax imageSrc={require('../img/demo.png')} alt="" />
 						</Col>
 						<Col s={12} m={12} l={6} className="content-centered">
 							<h1>NOZOMI NAKANO</h1>
@@ -160,6 +150,76 @@ export default class App extends React.Component {
 						</Col>
 						<Col s={12} m={2} l={3}></Col>
 					</Row>
+					<Row>
+						<Col s={12} m={12} l={12}>
+							<h1  className="content-home">WORKS</h1>
+						</Col>
+						<Col s={12} m={12} l={12}>
+							<Carousel
+								fixedItem={<button className='btn'>MORE</button>}
+								options={{ fullWidth: true,duration: 300, indicators: true }}
+								images={[
+									require('../img/demo.png'),
+									require('../img/demo.png'),
+									require('../img/demo.png')
+								]}
+							/>
+						</Col>
+					</Row>
+					<Row>
+						<Col s={12} m={2} l={3}></Col>
+						<Col s={12} m={8} l={6}>
+							<hr />
+						</Col>
+						<Col s={12} m={2} l={3}></Col>
+					</Row>
+					<Row>
+						<Col s={12} m={12} l={12}>
+							<h1  className="content-home">GALLERY</h1>
+						</Col>
+						<Col s={12} m={12} l={12}>
+							<Carousel
+								fixedItem={<button className='btn'>MORE</button>}
+								options={{ fullWidth: true,duration: 300, indicators: true }}
+								images={[
+									require('../img/demo.png'),
+									require('../img/demo.png'),
+									require('../img/demo.png')
+								]}
+							/>
+						</Col>
+					</Row>
+					<Row>
+						<Col s={12} m={2} l={3}></Col>
+						<Col s={12} m={8} l={6}>
+							<hr />
+						</Col>
+						<Col s={12} m={2} l={3}></Col>
+					</Row>
+					<Row>
+						<h1 className="content-home">CONTACT</h1>
+						<Input placeholder="Type your name" s={6} label="First Name" />
+						<Input s={6} label="Last Name" />
+						<Input type="email" label="Email" s={12} />
+						<Input type="textarea" label="Mensage" s={12} />
+					</Row>
+					<Footer copyrights="COPYRIGHT © 2017 WEBDESIGN & DEVELOPMENT BY YUKI OHORI"
+						moreLinks={
+							<a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+						}
+						links={
+							<ul>
+								<li><a className="grey-text text-lighten-3" href="#!">HOME</a></li>
+								<li><a className="grey-text text-lighten-3" href="#!">WORK</a></li>
+								<li><a className="grey-text text-lighten-3" href="#!">GALLERY</a></li>
+								<li><a className="grey-text text-lighten-3" href="#!">BLOG</a></li>
+							</ul>
+						}
+						className='example'
+					>
+							<h5 className="white-text">Footer Content</h5>
+							<p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+					</Footer>
 				</div>
       </div>
     )

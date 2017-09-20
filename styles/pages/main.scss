@@ -250,6 +250,7 @@ a, li, div, p{
 }
 
 .container-style{
+  overflow: hidden;
   background-color: white;
   @include lg {
     padding-left: 60px;
@@ -265,11 +266,25 @@ a, li, div, p{
 
 .about-home{
   text-align: center;
-  margin-top: 100px;
-  margin-bottom: 100px !important;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   img{
     width: 100%;
   }
+  &.show{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-home{
+  text-align: center;
+}
+
+hr{
+  margin-top: 100px;
+  margin-bottom: 100px !important;
 }
 
 .content-centered{
@@ -278,4 +293,25 @@ a, li, div, p{
   align-items: center;
   flex-direction: column;
   height: 100%;
+}
+
+.parallax{
+  z-index: 1 !important;
+}
+
+.parallax-container{
+  max-height: 350px;
+}
+
+.carousel{
+  max-height: 450px;
+}
+
+img{
+  border-radius: 3px;
+}
+
+.page-footer .row{
+  width: 100%;
+  padding: 100px 0;
 }

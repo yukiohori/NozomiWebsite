@@ -82,13 +82,6 @@ export default class navBar extends React.Component {
 								</div>
 							</div>
 						</Link>
-						<Link to="/">
-							<div onClick={this.closeMenu} className="link-img">
-									<div className="img-menu-bg">
-										<h1>CONTACT</h1>
-									</div>
-							</div>
-						</Link>
 					</div>
 					<div className="social-menu">
 						<a target="_blank" href="https://www.instagram.com"><p>INSTAGRAM</p></a>
